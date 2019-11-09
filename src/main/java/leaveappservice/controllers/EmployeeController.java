@@ -33,6 +33,19 @@ public class EmployeeController {
   }
   
   @CrossOrigin(origins = "http://localhost:4200")
+  @GetMapping(value="/emp/getEmpDetailsById/{id}")
+  public Employee getEmpDetailsById(@PathVariable("id") int id) {
+    Employee emp;
+    try {
+      emp = _empDao.getByEmployeeId(id);
+    }
+    catch(Exception ex) {
+      return null;
+    }
+    return emp;
+  }
+  
+  @CrossOrigin(origins = "http://localhost:4200")
   @GetMapping(value="/emp/getById/{id}")
   public Employee getById(@PathVariable("id") int id) {
     Employee emp;
